@@ -20,7 +20,7 @@ Pay attention - all BSS work only with audio signals of 16kHz sampling rate.
 
 [2] - D. Kitamura, N. Ono, H. Sawada, H. Kameoka, H. Saruwatari, "Determined blind source separation with independent low-rank matrix analysis," Audio Source Separation. Signals and Communication Technology., S. Makino, Ed. Springer, Cham, pp. 125-155, March 2018.  
 
-[3] - Ono, Nobutaka. "Stable and fast update rules for independent vector analysis based on auxiliary function technique." WASPAA 2011
+[3] - Ono, Nobutaka. "Stable and fast update rules for independent vector analysis based on auxiliary function technique." WASPAA 2011.
 
 
 Oleg Golokolenko, oleg.golokolenko@tu-ilmenau.de, August 2019.
