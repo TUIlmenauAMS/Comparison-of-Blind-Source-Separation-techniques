@@ -8,4 +8,4 @@ main_bss_separation.m is the main executable file which initially separates conv
 
 In order to change datasets (different distances and RT60) - simply uncomment in the beginning of the file desired line with FileName "fname". 
 
-Pay attention - all BSS work only with audio signals of 16000kHz sampling rate.
+Pay attention - all BSS work only with audio signals of 16kHz sampling rate.
