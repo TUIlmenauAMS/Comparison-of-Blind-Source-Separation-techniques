@@ -1,8 +1,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Sample program to compare several blind source separation techniques:   %
 % 1 - AIRES                                                               %
-% 2 - AuxIVA                                                              %
-% 3 - Independent Low-Rank Matrix Analysis (ILRMA)                        %
+% 2 - TRINICON                                                            %
+% 3 - AuxIVA                                                              %
+% 4 - Independent Low-Rank Matrix Analysis (ILRMA)                        %
 %                                                                         %
 % Coded by O. Golokolenko (oleg.golokolenko@tu-ilmenau.de) on July, 2019  %
 % Copyright 2019 Golokolenko Oleg                                         %
@@ -92,7 +93,7 @@ aires = aires_class_offline;
 aires.num_iterations = 20;
 % Search stepsize
 aires.alpha = 0.6;
-aires_x_demixed= aires.separate_signals(x_mixed);
+aires_x_demixed = aires.separate_signals(x_mixed);
 runtimeAlg = toc(startTrinc);
 fprintf('\tRuntime: %5.3f s\n', runtimeAlg);
 
@@ -100,11 +101,29 @@ fprintf('\tRuntime: %5.3f s\n', runtimeAlg);
 [SDR,SIR,SAR,perm]=bss_eval_sources(aires_x_demixed.',x_original.');
 disp('AIRES BSS SDR measure Original VS Unmixed, [dB]');
 disp(SDR);
+disp('AIRES BSS SIR measure Original VS Unmixed, [dB]');
+disp(SIR);
+
+%% Apply TRINICON BSS
+disp("****************");
+disp("TRINICON BSS");
+startTrinc = tic;
+% TRINICON configuration
+trinicon_x_demixed = trinicon_bss_fnc(x_mixed);
+runtimeAlg = toc(startTrinc);
+fprintf('\tRuntime: %5.3f s\n', runtimeAlg);
+
+
+[SDR,SIR,SAR,perm]=bss_eval_sources(trinicon_x_demixed.',x_original.');
+disp('TRINICON BSS SDR measure Original VS Unmixed, [dB]');
+disp(SDR);
+disp('TRINICON BSS SIR measure Original VS Unmixed, [dB]');
+disp(SIR);
 
 % Play separated sound sources
-%soundsc(aires_x_demixed(:,1), fs_);
+%soundsc(trinicon_x_demixed(:,1), fs_);
 %pause(5);
-%soundsc(aires_x_demixed(:,2), fs_);
+%soundsc(trinicon_x_demixed(:,2), fs_);
 %pause(5);
 
 %% Apply AuxIVA BSS
@@ -121,6 +140,8 @@ fprintf('\tRuntime: %5.3f s\n', runtimeAlg);
 [SDR,SIR,SAR,perm]=bss_eval_sources(auxiva_x_demixed.',x_original.');
 disp('AuxIVA BSS SDR measure Original VS Unmixed, [dB]');
 disp(SDR);
+disp('AuxIVA BSS SIR measure Original VS Unmixed, [dB]');
+disp(SIR);
 
 % Play separated sound sources
 %soundsc(auxiva_x_demixed(:,1), fs_);
@@ -142,6 +163,8 @@ fprintf('\tRuntime: %5.3f s\n', runtimeAlg);
 [SDR,SIR,SAR,perm]=bss_eval_sources(ilrma_x_demixed.',x_original.');
 disp('ILRMA BSS SDR measure Original VS Unmixed, [dB]');
 disp(SDR);
+disp('ILRMA BSS SIR measure Original VS Unmixed, [dB]');
+disp(SIR);
 
 % Play separated sound sources
 %soundsc(ilrma_x_demixed(:,1), fs_);
@@ -151,5 +174,74 @@ disp(SDR);
 %%
 
 
+function x_unmixed_trinicon = trinicon_bss_fnc(x_mixed)
 
+    %% TRINICON configuration
+
+    % number of microphones (= input channels)
+    cfg_trinicon.nMic = 2;
+    % number of sources (= output channels)
+    cfg_trinicon.nSrc = 2;
+
+    % length of unmixing filter w (in samples)
+    cfg_trinicon.L = 1024;
+    % number of maximum delays for calculation of correlation
+    cfg_trinicon.D = cfg_trinicon.L-1;
+
+    % off-line block length (in samples)
+    cfg_trinicon.blockLen = 2 * cfg_trinicon.L;
+
+    % Sylvester constraint: 'SCC': column SC,   'SCR': row SC
+    cfg_trinicon.SC = 'SCR';
+
+    % shift of unit impulse at initialization (in samples); should be chosen
+    % large enough to cover the intermicrophone distance
+    cfg_trinicon.initShift = 20;
+
+    % adaptation step size
+    cfg_trinicon.stepSize = 0.01;
+
+    % number of iterations
+    cfg_trinicon.numIter = 600;
+
+
+    % --- Inverses
+    % inversion method:
+    %   one of 'efficient_broadband', 'inv_narrowband'
+    cfg_trinicon.compCorrInv = 'inv_narrowband';
+
+
+    % -- efficient broadband inverse
+    % value of regularization for sigma^2=0
+    cfg_trinicon.effBroadPar.delta = 1;
+
+
+    % --- narrowband inverse
+    % regularization constant
+    cfg_trinicon.invNrbPar.delta = eps;
+
+    % DFT length for inversion
+    cfg_trinicon.invNrbPar.NBR = 10 * cfg_trinicon.blockLen;
+
+    % weighting factor between narrowband and broadband inverse, extremal values:
+    %   0: narrowband,      1: broadband
+    cfg_trinicon.invNrbPar.NBrho = 0.5;
+
+
+    % - run offline TRINICON
+    % inputs:
+    %   cfg_trinicon:   configuration structure; see above
+    %   x:              acoustic mixture (two channels);
+    %                   dimension <nSamples x 2>
+    %
+    % outputs:
+    %   y:              separated signals; same length as input;
+    %                   dimension <nSamples x 2>
+    %   W:              demixing system; dimension <L x nMic x nSrc>;
+    %                   i.e., W(:,p,q) denotes the impulse response from
+    %                   the p-th input to the q-th output    
+    offlTrinc = CLASS_offlineTRINICON(cfg_trinicon);
+    [x_unmixed_trinicon, W] = offlTrinc.sepSignals(x_mixed);   
+
+end
 
