@@ -48,4 +48,4 @@ scheme  and  its  application  to  reverberant  and  noisy acoustic environments
 
 
 
-Oleg Golokolenko, oleg.golokolenko@tu-ilmenau.de, August 2019.
+Oleg Golokolenko, oleg.golokolenko@tu-ilmenau.de, October 2019.
