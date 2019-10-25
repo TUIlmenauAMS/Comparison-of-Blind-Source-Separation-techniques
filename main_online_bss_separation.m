@@ -1,3 +1,29 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sample program to compare several online (real-time) blind source       % 
+% separation techniques:                                                  % 
+% 1 - AIRES                                                               %
+% 2 - TRINICON                                                            %
+%                                                                         %
+% Coded by O. Golokolenko (oleg.golokolenko@tu-ilmenau.de)                %
+% Copyright 2019 Golokolenko Oleg                                         %
+%                                                                         %
+% These programs are distributed only for academic research at            %
+% universities and research institutions.                                 %
+% It is not allowed to use or modify these programs for commercial or     %
+% industrial purpose without our permission.                              %
+% When you use or modify these programs and write research articles,      %
+% cite the following references:                                          %
+%                                                                         %
+% 1 - O.  Golokolenko  and  G.  Schuller,  "A FAST STEREO AUDIO SOURCE    %
+% SEPARATION FOR MOVING SOURCES," in ASILOMAR, 2019                       %
+%                                                                         %
+% 2 - Robert  Aichner,  Herbert  Buchner,  Fei  Yan,  and  Walter         %
+% Kellermann, “A  real-time  blind  source  separation scheme  and  its   %
+% application  to  reverberant  and  noisy acoustic environments,”        %
+% Signal Processing, vol. 86, no.6, pp. 1260 – 1277, 2006,                %
+% Applied Speech and Audio Processing.                                    %                
+%                                                                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear; close all; clc;
 
 %% Load simulated datasets
