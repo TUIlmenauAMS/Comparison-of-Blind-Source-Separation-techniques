@@ -36,6 +36,7 @@ The main executable file separates convolutive mixture using our proposed Time D
 * How to change convolutive mixtures:
 
 simply uncomment in the beginning of the file desired line with FileName "fname". 
+
 Pay attention - all BSS work only with audio signals of 16kHz sampling rate.
 
 [1] - O.  Golokolenko  and  G.  Schuller,  "A FAST STEREO AUDIO SOURCE SEPARATION FOR MOVING SOURCES," in ASILOMAR, 2019
