@@ -87,7 +87,7 @@ disp("****************");
 disp("AIRES BSS");
 startTrinc = tic;
 % AIRES configuration
-aires = aires_class;
+aires = aires_class_offline;
 % Number of unmixing iteretions
 aires.num_iterations = 20;
 % Search stepsize
