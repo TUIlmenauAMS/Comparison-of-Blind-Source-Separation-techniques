@@ -41,7 +41,7 @@ fs_ = 16000;
 
 %% Load simulated dataset
 fs = 16000;
-addpath('offline_convolutive_datasets')
+addpath('convolutive_datasets')
 %% RT60 = 0.05s and distance from sound sources to mics = 1m
 %fname = 'stationary_ss_rt60-0.05_TIMIT_dist-1.0m.mat';
 %% RT60 = 0.05s and distance from sound sources to mics = 2.5m
