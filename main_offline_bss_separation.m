@@ -15,25 +15,30 @@
 % When you use or modify these programs and write research articles,      %
 % cite the following references:                                          %
 %                                                                         %
-% # reference:Ono, Nobutaka. "Stable and fast update rules for            %
-% independent vector analysis based on auxiliary                          %
-% function technique." WASPAA 2011.                                       %
-% ZitengWANG@201901                                                       %
+% 1 - O.  Golokolenko  and  G.  Schuller,  "Fast  time  domain            %
+% stereo audio source separation using fractional delay filters,"         %
+% in AES 147th Convention, 2019                                           %
 %                                                                         %
-% # Original paper (The algorithm was called "Rank-1 MNMF" in this paper) %
-% D. Kitamura, N. Ono, H. Sawada, H. Kameoka, H. Saruwatari, "Determined  %
-% blind source separation unifying independent vector analysis and        %
-% nonnegative matrix factorization," IEEE/ACM Trans. ASLP, vol. 24,       %
-% no. 9, pp. 1626-1641, September 2016.                                   %
+% 2 - H. Buchner, R. Aichner, and W. Kellermann, "Trinicon: A versatile   %
+% framework for multichannel blind signal processing,"  in                %
+% IEEE International Conference on Acoustics,  Speech,  and  Signal       %
+% Processing,  Montreal,  Que., Canada, 2004.                             %
 %                                                                         %
-% # Book chapter (The algorithm was renamed as "ILRMA")                   %
-% D. Kitamura, N. Ono, H. Sawada, H. Kameoka, H. Saruwatari, "Determined  %
+% 3 - Ono, Nobutaka. "Stable and fast update rules for independent        %
+% vector analysis based on auxiliary function technique." WASPAA 2011.    %
+%                                                                         %
+% 4 - D. Kitamura, N. Ono, H. Sawada, H. Kameoka, H. Saruwatari,          %
+% "Determined blind source separation unifying independent vector         %
+% analysis and nonnegative matrix factorization," IEEE/ACM Trans. ASLP,   %
+% vol. 24,no. 9, pp. 1626-1641, September 2016.                           %
+%                                                                         %
+% 5 - D. Kitamura, N. Ono, H. Sawada, H. Kameoka, "Determined             %
 % blind source separation with independent low-rank matrix analysis,"     %
 % Audio Source Separation. Signals and Communication Technology.,         %
 % S. Makino, Ed. Springer, Cham, pp. 125-155, March 2018.                 %
 %                                                                         %
 % Audio sample files are taken from TIMIT database: J. Garofolo           %
-% et al., ???Timit acoustic-phonetic continuous speech corpus,??? 1993        %
+% et al., ???Timit acoustic-phonetic continuous speech corpus,??? 1993    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clear; close all; clc;
