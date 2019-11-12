@@ -109,17 +109,18 @@ disp(SDR);
 disp('AIRES BSS SIR measure Original VS Unmixed, [dB]');
 disp(SIR);
 
-audiowrite('aires_unmixed_channel_1.wav',aires_x_demixed(:,1), fs_)
-audiowrite('aires_unmixed_channel_2.wav',aires_x_demixed(:,2), fs_)
+audiowrite('resulting_wav/aires_stationary_ss_unmixed_channel_1.wav',aires_x_demixed(:,1), fs_);
+audiowrite('resulting_wav/aires_stationary_ss_unmixed_channel_2.wav',aires_x_demixed(:,2), fs_);
 
-audiowrite('mixed_channel_1.wav',x_mixed(:,1), fs_)
-audiowrite('mixed_channel_2.wav',x_mixed(:,2), fs_)
+audiowrite('resulting_wav/stationary_ss_mixed_channel_1.wav',x_mixed(:,1), fs_);
+audiowrite('resulting_wav/stationary_ss_mixed_channel_2.wav',x_mixed(:,2), fs_);
 
-% Play separated sound sources
+% Play AIRES separated sound sources
+disp('Play AIRES separated sound sources');
 soundsc(aires_x_demixed(:,1), fs_);
-%pause(5);
+pause(5);
 soundsc(aires_x_demixed(:,2), fs_);
-%pause(5);
+pause(5);
 
 %% Apply TRINICON BSS
 disp("****************");
