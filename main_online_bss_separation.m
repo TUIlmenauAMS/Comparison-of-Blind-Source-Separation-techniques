@@ -111,6 +111,31 @@ disp('Mixed VS Original evaluation');
 %%
 
 
+
+audiowrite('resulting_wav/aires_moving_ss_unmixed_channel_1.wav',x_unmixed_aires(:,1), fs);
+audiowrite('resulting_wav/aires_moving_ss_unmixed_channel_2.wav',x_unmixed_aires(:,2), fs);
+
+audiowrite('resulting_wav/moving_ss_mixed_channel_1.wav',x(:,1), fs);
+audiowrite('resulting_wav/moving_ss_mixed_channel_2.wav',x(:,2), fs);
+
+% Play AIRES separated sound sources
+disp('Play AIRES separated sound sources');
+soundsc(x_unmixed_aires(:,1), fs);
+pause(5);
+soundsc(x_unmixed_aires(:,2), fs);
+pause(5);
+
+% Play TRINICON separated sound sources
+disp('Play TRINICON separated sound sources');
+soundsc(x_unmixed_trinicon(:,1), fs);
+pause(5);
+soundsc(x_unmixed_trinicon(:,2), fs);
+pause(5);
+
+
+
+
+
 function [SDR, SIR, sdr_mean_block, sir_mean_block]= bss_evaluation(y, x_orig)
 %% Calculate SDR, SIR
 % Inputs:
