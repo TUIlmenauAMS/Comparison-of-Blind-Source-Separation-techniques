@@ -106,8 +106,8 @@ disp('AIRES evaluation');
 [aires_results(1,:), aires_results(2,:), aires_results(3,:), aires_results(4,:)]= bss_evaluation(x_unmixed_aires, x_original_new);
 fprintf('\n###########################################\n')
 %% Calculate SDR, SIR Mixed VS Original
-disp('Mixed VS Original evaluation');
-[mixedVSoriginal_results(1,:), mixedVSoriginal_results(2,:), mixedVSoriginal_results(3,:), mixedVSoriginal_results(4,:)]= bss_evaluation(x, x_original_new);
+%disp('Mixed VS Original evaluation');
+%[mixedVSoriginal_results(1,:), mixedVSoriginal_results(2,:), mixedVSoriginal_results(3,:), mixedVSoriginal_results(4,:)]= bss_evaluation(x, x_original_new);
 %%
 
 
@@ -115,22 +115,30 @@ disp('Mixed VS Original evaluation');
 audiowrite('resulting_wav/aires_moving_ss_unmixed_channel_1.wav',x_unmixed_aires(:,1), fs);
 audiowrite('resulting_wav/aires_moving_ss_unmixed_channel_2.wav',x_unmixed_aires(:,2), fs);
 
+audiowrite('resulting_wav/trinicon_moving_ss_unmixed_channel_1.wav',x_unmixed_trinicon(:,1), fs);
+audiowrite('resulting_wav/trinicon_moving_ss_unmixed_channel_2.wav',x_unmixed_trinicon(:,2), fs);
+
 audiowrite('resulting_wav/moving_ss_mixed_channel_1.wav',x(:,1), fs);
 audiowrite('resulting_wav/moving_ss_mixed_channel_2.wav',x(:,2), fs);
 
 % Play AIRES separated sound sources
+cut_time = 6*fs;
 disp('Play AIRES separated sound sources');
-soundsc(x_unmixed_aires(:,1), fs);
-pause(5);
-soundsc(x_unmixed_aires(:,2), fs);
-pause(5);
+disp('Play Channel 1');
+soundsc(x_unmixed_aires(1:cut_time,1), fs);
+pause(7);
+disp('Play Channel 2');
+soundsc(x_unmixed_aires(1:cut_time,2), fs);
+pause(7);
 
 % Play TRINICON separated sound sources
 disp('Play TRINICON separated sound sources');
-soundsc(x_unmixed_trinicon(:,1), fs);
-pause(5);
-soundsc(x_unmixed_trinicon(:,2), fs);
-pause(5);
+disp('Play Channel 1');
+soundsc(x_unmixed_trinicon(1:cut_time,1), fs);
+pause(7);
+disp('Play Channel 2');
+soundsc(x_unmixed_trinicon(1:cut_time,2), fs);
+pause(7);
 
 
 
