@@ -2,7 +2,7 @@
 
 This sample software applies Blind Source Separation (BSS) algorithms to simulated convolutive mixtures in order to compare separation performance.
 
-1 - Offline BSS comparison
+## 1 - Offline BSS comparison
 * The main file to run comparison:
 "main_offline_bss_separation.m": AIRES vs TRINICON vs ILRMA vs AuxIVA
 
@@ -27,7 +27,7 @@ IEEE International Conference on Acoustics,  Speech,  and  Signal  Processing,  
 [5] - Ono, Nobutaka. "Stable and fast update rules for independent vector analysis based on auxiliary function technique." WASPAA 2011.
 
 
-2 - Online BSS comparison
+## 2 - Online BSS comparison
 * The main file to run comparison:
 "main_online_bss_separation.m": AIRES vs TRINICON
 
