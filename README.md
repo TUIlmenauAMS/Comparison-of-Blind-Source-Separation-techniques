@@ -31,8 +31,6 @@ IEEE International Conference on Acoustics,  Speech,  and  Signal  Processing,  
 * The main file to run comparison:
 "main_online_bss_separation.m": AIRES vs TRINICON
 
-* Convolutive mixtures are too big. Please download the samples here https://drive.google.com/open?id=1NrkBwqkX3oZdTdNIPzpg9jV9wfqwnnmW and move them into "convolutive_datasets" folder. 
-
 The main executable file separates convolutive mixture using our proposed Time Domain Stereo Audio Source Separation technique (AIRES)[1], online time domain TRINICON[2]. For evaluation the Signal-to-Distortion Ratio, Signal-to-Interference Ratio and mean computation time per signal block are printed.
 
 * How to change convolutive mixtures:
